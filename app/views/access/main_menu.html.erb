@@ -1,0 +1,20 @@
+<h1> Main Menu <h1>
+<br> 
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+	<h4> <strong> Please make a selection: <strong> <h4> 
+		<table border='6'>
+			<%= form_for :access, url: access_check_path, method: :get do %>
+			<tr> 
+				<td> Fobs </td>
+					<td> <%= select_tag 'fob', options_from_collection_for_select(@fobs, :id, :serial) %></td>
+			</tr> 
+					
+			<tr>
+				<td> Doors </td>
+					<td> <%= select_tag 'door', options_from_collection_for_select(@doors, :id, :name) %> </td>
+			</tr>
+		</table>
+			<br> 
+				<%= submit_tag ("Submit Selection") %>
+			<%end%>
